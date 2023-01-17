@@ -14,29 +14,65 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 
-// array variables
-var lowerCase ="abdefghifjlkmnopqrstuvwxyz";
-var upperCase ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numeric = "0123456789";
-var special = "!@#$%^&*()-_=+[]{};:'<>/?\|`~.";
+// Array variables
+var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numberCharacters = "01234567890";
+var specialCharacters = "!'#$%&()*+-./:;<=>?@[]^_`{|},~";
 
-// main functions
+// Main function
+
 function generatePassword() {
   var password = "";
   var newPassword = "";
 
-// password length prompts with error prompt
-var passwordLength = window.prompt("How many characters do you want for your password?(Choose an integer between 8-128");
-  while ((passwordLength < 8) || (passwordLegth > 128)) {
-    window.alert("Please try again. Select a value between 8-128");
-    passwordLength = window.prompt("How many characters do you want for your password?(Choose an integer between 8-128");
+
+  // password length prompt with error code prompt
+
+  var passwordLength = window.prompt("Choose a password length between 8-128 characters.");
+  while ((passwordLength < 8) || (passwordLength > 128)) {
+    window.alert("Invalid password length selected. Please try again.");
+    passwordLength = window.prompt("Choose a password length between 8-128 characters.");
   }
 
-// password criteria functions
-function passwordCriteria() {
-  includeUpperCase = window.confirm ("Include uppercase letters?\nType \"YES\" or \"NO\"");
-  if (includeUpperCase) {
-    
+  // password criteria prompts
+
+  function passwordCriteria() {
+
+    var includeLowerCase = window.confirm("Include lowercase letters?");
+    if (includeLowerCase) {
+      newPassword += lowerCase;
+    }
+
+    var includeUpperCase = window.confirm("Include uppercase letters?");
+    if (includeUpperCase) {
+      newPassword += upperCase;
+    }
+
+    var includeNumbers = window.confirm("Include numbers?");
+    if (includeNumbers) {
+      newPassword += numberCharacters;
+    }
+  
+    var includeSymbols = window.confirm("Include special characters?");
+    if (includeSymbols) {
+      newPassword += specialCharacters;
+    }
+
+    // Error prompt (while returns to a boolean value)
+
+    while ((!includeLowerCase) && (!includeUpperCase) && (!includeNumbers) && (!includeSymbols)) {
+      window.alert("You must select at least 1 character type.");
+      passwordCriteria();
+    }
   }
-}
+  passwordCriteria();
+
+  // Random generator via https://www.geeksforgeeks.org/java-math-random-method-examples/
+
+  for (var i = 0; i < getPasswordLength; i++) {
+    password += newPassword.charAt(Math.floor(Math.random() * newPassword.length));
+  }
+
+  return password;
 }
