@@ -11,7 +11,7 @@
 
 # Webpage Image with Link
 ### Link https://terrinmack.github.io/Java-Password-Gen/
-![Webpage Screeenshot](assets/images/webpage-screenshot.jpg)
+![Webpage Screeenshot](Assets/images/webpage-screenshot.jpg)
 
 # Installation
 * Using class resources and google, obtained a framework of a randomized generator system.
