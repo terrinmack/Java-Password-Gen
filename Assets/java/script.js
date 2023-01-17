@@ -39,14 +39,14 @@ function generatePassword() {
 
   function passwordCriteria() {
 
-    var includeLowerCase = window.confirm("Include lowercase letters?");
-    if (includeLowerCase) {
-      newPassword += lowerCase;
-    }
-
     var includeUpperCase = window.confirm("Include uppercase letters?");
     if (includeUpperCase) {
       newPassword += upperCase;
+    }
+    
+    var includeLowerCase = window.confirm("Include lowercase letters?");
+    if (includeLowerCase) {
+      newPassword += lowerCase;
     }
 
     var includeNumbers = window.confirm("Include numbers?");
@@ -70,7 +70,7 @@ function generatePassword() {
 
   // Random generator via https://www.geeksforgeeks.org/java-math-random-method-examples/
 
-  for (var i = 0; i < getPasswordLength; i++) {
+  for (var i = 0; i < passwordLength; i++) {
     password += newPassword.charAt(Math.floor(Math.random() * newPassword.length));
   }
 
